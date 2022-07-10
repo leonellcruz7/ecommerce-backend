@@ -63,8 +63,7 @@ module.exports = {
                         availableStock: result.availableStock + order.quantity
                     }
                 })
-
-            }).then(result => { res.send(`ok`) })
+            }).then(result => { res.send(order) })
         }
         catch {
             res.send(`catt`)
