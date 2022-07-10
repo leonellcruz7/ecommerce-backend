@@ -50,29 +50,20 @@ module.exports = {
     },
 
     deleteOrder: async (req, res) => {
-        try {
-            let order = await Order.findById(req.body.id).then(result => {
+        let order = await Order.findById(req.body.id).then(result => {
+            result.deleteOne()
+            return result
 
-
-                return result
-            })
-
-            await Product.findById({ _id: order.productId }).then(result => {
-                result.updateOne({
-                    set$: {
-                        availableStock: result.availableStock + order.quantity
-                    }
-                })
-            }).then(result => { res.send(order) })
-        }
-        catch {
-            res.send(`catt`)
-        }
-
-
-
-
-
+        })
+        Product.findById(order.productId).then(result => {
+            result.updateOne({
+                $set: {
+                    availableStock: result.availableStock + order.quantity
+                }
+            }).then(res.send(result))
+        })
     }
+
+
 
 }

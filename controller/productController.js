@@ -35,7 +35,7 @@ module.exports = {
 
     getById: (req, res) => {
         Product.findById(req.body.id).then(result => {
-            res.send(result.availableStock.toString())
+            res.send(result)
 
 
         })
