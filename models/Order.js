@@ -36,6 +36,10 @@ const orderSchema = mongoose.Schema({
     orderedOn: {
         type: Date,
         default: new Date()
+    },
+    status: {
+        type: String,
+        default: 'Pending'
     }
 })
 

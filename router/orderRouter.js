@@ -12,6 +12,8 @@ router.get('/getmyorder', auth.verify, orderController.getMyOrder)
 
 router.delete('/deleteorder', orderController.deleteOrder)
 
+router.patch('/checkout', auth.verify, orderController.checkOut)
+
 
 
 module.exports = router;

@@ -2,6 +2,7 @@ const Product = require(`../models/Product`)
 const User = require(`../models/User`)
 const Order = require(`../models/Order`)
 const auth = require(`../auth`)
+const { updateOne } = require("../models/Product")
 
 module.exports = {
 
@@ -44,7 +45,7 @@ module.exports = {
     getMyOrder: (req, res) => {
 
         const user = auth.decode(req.headers.authorization)
-        Order.find({ accountId: user.id }).then(result => {
+        Order.find({ accountId: user.id, status: "pending" }).then(result => {
             res.send(result)
         })
     },
@@ -62,7 +63,31 @@ module.exports = {
                 }
             }).then(res.send(result))
         })
+    },
+
+    checkOut: (req, res) => {
+        const user = auth.decode(req.headers.authorization)
+
+        Order.find({ accountId: user.id }).then(result => {
+            // res.send(result[0])
+            for (let i = 0; i < result.length; i++) {
+                result[i].updateOne({
+                    $set: {
+                        status: "paid"
+                    }
+                }).then(result => {
+
+                })
+
+            }
+            res.send(true)
+
+        })
+
+
     }
+
+
 
 
 
