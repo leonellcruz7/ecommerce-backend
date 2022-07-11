@@ -42,12 +42,16 @@ module.exports = {
         })
     },
 
-    getMyOrder: (req, res) => {
+    getMyOrder: async (req, res) => {
 
         const user = auth.decode(req.headers.authorization)
-        Order.find({ accountId: user.id, status: "pending" }).then(result => {
+
+        Order.find({ accountId: user.id }).then(result => {
             res.send(result)
         })
+
+
+
     },
 
     deleteOrder: async (req, res) => {
