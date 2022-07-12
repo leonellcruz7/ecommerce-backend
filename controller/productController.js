@@ -41,23 +41,6 @@ module.exports = {
         })
     },
 
-    getByCategory: async (req, res) => {
-        await Product.find().then(result => {
-            let found = []
-            for (let i = 0; i < result.length; i++) {
-                if (result[i].category.includes(req.body.find)) {
-                    found += result[i]
-                }
-                else {
-
-                }
-            }
-            res.send(found)
-        })
-
-
-    },
-
     addStock: (req, res) => {
         Product.findById(req.body.id).then(result => {
             result.updateOne({
@@ -77,6 +60,12 @@ module.exports = {
 
     getByKind: (req, res) => {
         Product.find({ kind: req.body.kind }).then(result => {
+            res.send(result)
+        })
+    },
+
+    getByCategory: (req, res) => {
+        Product.find({ category: req.body.category }).then(result => {
             res.send(result)
         })
     }

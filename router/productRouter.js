@@ -9,10 +9,10 @@ router.get(`/all`, productController.getAll)
 
 router.post(`/getbyid`, productController.getById)
 
-router.post('/getbycategory', productController.getByCategory)
-
 router.post('/addstock', productController.addStock)
 
 router.post('/getbykind', productController.getByKind)
+
+router.post('/getbycategory', productController.getByCategory)
 
 module.exports = router;
