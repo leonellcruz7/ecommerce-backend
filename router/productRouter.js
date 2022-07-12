@@ -15,4 +15,6 @@ router.post('/getbykind', productController.getByKind)
 
 router.post('/getbycategory', productController.getByCategory)
 
+router.post('/search', productController.search)
+
 module.exports = router;

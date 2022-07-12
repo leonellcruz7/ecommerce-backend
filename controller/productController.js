@@ -68,6 +68,21 @@ module.exports = {
         Product.find({ category: req.body.category }).then(result => {
             res.send(result)
         })
+    },
+
+    search: (req, res) => {
+        Product.aggregate([
+            {
+                $match: {
+                    $or: [
+                        { kind: req.body.search },
+                        { category: req.body.search },
+                        { brand: req.body.search }
+
+                    ]
+                }
+            }
+        ]).then(result => { res.send(result) })
     }
 
 
