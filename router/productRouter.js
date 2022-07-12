@@ -13,4 +13,6 @@ router.post('/getbycategory', productController.getByCategory)
 
 router.post('/addstock', productController.addStock)
 
+router.post('/getbykind', productController.getByKind)
+
 module.exports = router;

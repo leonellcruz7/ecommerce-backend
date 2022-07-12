@@ -31,6 +31,16 @@ const productSchema = mongoose.Schema({
         required: true
     },
 
+    kind: {
+        type: String,
+        required: true
+    },
+
+    category: {
+        type: String,
+        required: true
+    },
+
     isActive: {
         type: Boolean,
         default: true

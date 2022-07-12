@@ -73,6 +73,12 @@ module.exports = {
                 }
             })
         })
+    },
+
+    getByKind: (req, res) => {
+        Product.find({ kind: req.body.kind }).then(result => {
+            res.send(result)
+        })
     }
 
 

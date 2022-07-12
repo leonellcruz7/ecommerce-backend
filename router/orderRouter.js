@@ -14,6 +14,8 @@ router.delete('/deleteorder', orderController.deleteOrder)
 
 router.patch('/checkout', auth.verify, orderController.checkOut)
 
+router.get('/orderhistory', auth.verify, orderController.orderHistory)
+
 
 
 module.exports = router;

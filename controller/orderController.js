@@ -46,7 +46,10 @@ module.exports = {
 
         const user = auth.decode(req.headers.authorization)
 
-        Order.find({ accountId: user.id }).then(result => {
+        Order.find({
+            accountId: user.id,
+            status: "pending"
+        }).then(result => {
             res.send(result)
         })
 
@@ -89,6 +92,14 @@ module.exports = {
         })
 
 
+    },
+
+    orderHistory: (req, res) => {
+        const user = auth.decode(req.headers.authorization)
+        Order.find({
+            accountId: user.id,
+            status: "paid"
+        }).then(result => { res.send(result) })
     }
 
 
