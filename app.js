@@ -4,7 +4,7 @@ const mongoose = require(`mongoose`)
 const port = 4000
 const cors = require('cors')
 const corsAllow = {
-    origin: 'https://ecommerce-leonell.herokuapp.com/products/all'
+    origin: 'https://localhost:3000'
 }
 
 
