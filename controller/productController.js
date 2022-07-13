@@ -9,6 +9,8 @@ module.exports = {
             name: req.body.name,
             description: req.body.description,
             category: req.body.category,
+            kind: req.body.kind,
+            brand: req.body.brand,
             price: req.body.price,
             image: req.body.image,
             availableStock: req.body.availableStock

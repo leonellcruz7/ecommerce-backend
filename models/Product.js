@@ -36,10 +36,11 @@ const productSchema = mongoose.Schema({
         required: true
     },
 
-    category: {
+    brand: {
         type: String,
         required: true
     },
+
 
     isActive: {
         type: Boolean,
