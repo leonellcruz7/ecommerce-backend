@@ -4,7 +4,8 @@ const mongoose = require(`mongoose`)
 const port = 4000
 const cors = require('cors')
 const corsAllow = {
-    origin: 'https://localhost:3000'
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
 }
 
 
