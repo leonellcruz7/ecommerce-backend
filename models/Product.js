@@ -55,6 +55,16 @@ const productSchema = mongoose.Schema({
     createdOn: {
         type: Date,
         default: new Date()
+    },
+
+    sellerId: {
+        type: String,
+        required: true
+    },
+
+    sellerName: {
+        type: String,
+        required: true
     }
 })
 

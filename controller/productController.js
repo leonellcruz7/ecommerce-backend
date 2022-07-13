@@ -1,30 +1,37 @@
 const Product = require(`../models/Product`)
+const User = require(`../models/User`)
 const auth = require(`../auth`)
 
 module.exports = {
 
     addProduct: (req, res) => {
+        const user = auth.decode(req.headers.authorization)
 
-        const newProduct = new Product({
-            name: req.body.name,
-            description: req.body.description,
-            category: req.body.category,
-            kind: req.body.kind,
-            brand: req.body.brand,
-            price: req.body.price,
-            image: req.body.image,
-            availableStock: req.body.availableStock
+        User.findById(user.id).then(result => {
+            const newProduct = new Product({
+                name: req.body.name,
+                description: req.body.description,
+                category: req.body.category,
+                kind: req.body.kind,
+                brand: req.body.brand,
+                price: req.body.price,
+                image: req.body.image,
+                availableStock: req.body.availableStock,
+                sellerId: user.id,
+                sellerName: `${result.firstName} ${result.lastName}`
+            })
+
+            newProduct.save().then((succ, err) => {
+                if (err) {
+                    res.send(err)
+                }
+                else {
+                    res.send(succ)
+
+                }
+            })
         })
 
-        newProduct.save().then((succ, err) => {
-            if (err) {
-                res.send(err)
-            }
-            else {
-                res.send(succ)
-
-            }
-        })
 
 
     },
@@ -85,6 +92,13 @@ module.exports = {
                 }
             }
         ]).then(result => { res.send(result) })
+    },
+    getListings: (req, res) => {
+        const user = auth.decode(req.headers.authorization)
+
+        Product.find({ sellerId: user.id }).then(result => {
+            res.send(result)
+        })
     }
 
 
