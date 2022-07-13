@@ -99,6 +99,29 @@ module.exports = {
         Product.find({ sellerId: user.id }).then(result => {
             res.send(result)
         })
+    },
+
+    delete: (req, res) => {
+        Product.findByIdAndDelete(req.body.id).then(result => {
+            res.send(result)
+        })
+    },
+
+    update: (req, res) => {
+        Product.findByIdAndUpdate({ _id: req.body.id }, {
+            $set: {
+                name: req.body.name,
+                description: req.body.description,
+                category: req.body.category,
+                price: req.body.price,
+                image: req.body.image,
+                availableStock: req.body.stock,
+                kind: req.body.kind,
+                brand: req.body.brand
+            }
+        }).then(result => {
+            res.send(result)
+        })
     }
 
 

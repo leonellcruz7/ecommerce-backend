@@ -19,4 +19,8 @@ router.post('/search', productController.search)
 
 router.get('/listings', auth.verify, productController.getListings)
 
+router.delete('/deleteproduct', productController.delete)
+
+router.patch('/updateproduct', productController.update)
+
 module.exports = router;
