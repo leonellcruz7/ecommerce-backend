@@ -4,7 +4,7 @@ const mongoose = require(`mongoose`)
 const port = 4000
 const cors = require('cors')
 const corsAllow = {
-    origin: ['http://localhost:3000', 'https://ecommerce-leonell.herokuapp.com'],
+    origin: ['http://localhost:3000', 'https://ecommerce-leonell.herokuapp.com', 'https://res.cloudinary.com', 'https://api.cloudinary.com'],
     optionsSuccessStatus: 200
 }
 
