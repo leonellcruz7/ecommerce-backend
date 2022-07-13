@@ -3,13 +3,14 @@ const app = express()
 const mongoose = require(`mongoose`)
 const port = 4000
 const cors = require('cors')
-const corsAllow = {
-    origin: 'https://capstone-3-ecommerce-website.vercel.app',
-    optionsSuccessStatus: 200
-}
 
 
-app.use(cors(corsAllow));
+
+app.use(cors({
+    allowedHeaders: '*',
+    allowMethods: '*',
+    origin: '*'
+}));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
