@@ -12,7 +12,8 @@ module.exports = {
             lastName: req.body.lastName,
             mobileNumber: req.body.mobileNumber,
             email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10)
+            password: bcrypt.hashSync(req.body.password, 10),
+            isAdmin: req.body.isAdmin
         })
 
         newUser.save().then((succ, err) => {
