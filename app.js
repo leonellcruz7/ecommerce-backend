@@ -4,7 +4,7 @@ const mongoose = require(`mongoose`)
 const port = 4000
 const cors = require('cors')
 const corsAllow = {
-    origin: ['http://localhost:3000', 'https://capstone-3-ecommerce-website.vercel.app'],
+    origin: ['http://localhost:3000', 'https://capstone-3-ecommerce-website.vercel.app/'],
     optionsSuccessStatus: 200
 }
 
