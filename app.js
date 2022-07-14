@@ -6,6 +6,7 @@ const cors = require('cors')
 
 
 
+
 app.use(cors({
     allowedHeaders: '*',
     allowMethods: '*',
@@ -23,7 +24,7 @@ app.use(`/orders`, orderRoute)
 
 
 
-mongoose.connect(`mongodb+srv://admin:admin@wdc028-course-booking.mgfy3.mongodb.net/ecommerce-website?retryWrites=true&w=majority`, {
+mongoose.connect(mongodb, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }, () => console.log(`Connected to MongoDB`))
