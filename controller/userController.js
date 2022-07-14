@@ -59,64 +59,15 @@ module.exports = {
         })
     },
 
-    // addToCart: async (req, res) => {
-    //     const user = auth.decode(req.headers.authorization)
-
-    //     try {
-    //         const prodStat = await Product.findById(req.body.id).then(result => {
-    //             return result.updateOne({
-    //                 $set: {
-    //                     availableStock: result.availableStock - req.body.amount
-    //                 }
-    //             }).then((succ, err) => {
-    //                 if (err) {
-    //                     return false
-    //                 }
-    //                 else {
-    //                     return result
-    //                 }
-    //             })
-    //         })
-
-    //         const userStat = await User.findById(user.id).then(result => {
-    //             result.orders.push({
-    //                 productId: req.body.id,
-    //                 productName: prodStat.name,
-    //                 price: prodStat.price,
-    //                 amount: req.body.amount,
-    //                 totalBalance: prodStat.price * req.body.amount
-    //             })
-    //             return result.save().then((succ, err) => {
-    //                 if (err) {
-    //                     return false
-    //                 }
-    //                 else {
-    //                     return true
-    //                 }
-    //             })
-    //         })
-
-    //         res.send(userStat)
-
-    //     }
-    //     catch {
-    //         res.send(`cat`)
-    //     }
+    getByEmail: (req, res) => {
+        User.find({ email: req.body.email }).then(result => {
+            res.send(result)
+        })
+    }
 
 
 
-    // },
 
-    // deleteOrder: async (req, res) => {
-    //     try {
-
-
-    //     }
-    //     catch {
-    //         res.send(`sdf`)
-    //     }
-
-    // }
 
 
 }

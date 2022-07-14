@@ -11,8 +11,7 @@ router.post(`/login`, userController.login)
 
 router.get('/details', auth.verify, userController.detail)
 
-// router.post('/addtocart', auth.verify, userController.addToCart)
+router.post('/getbyemail', userController.getByEmail)
 
-// router.delete('/deleteorder', userController.deleteOrder)
 
 module.exports = router;
